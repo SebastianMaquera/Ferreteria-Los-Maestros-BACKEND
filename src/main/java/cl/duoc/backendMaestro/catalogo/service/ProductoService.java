@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import cl.duoc.backendMaestro.catalogo.model.Producto;
+import cl.duoc.backendMaestro.catalogo.dto.ProductoResponseDTO;
 import cl.duoc.backendMaestro.catalogo.repository.ProductoRepository;
 
 @Service
@@ -15,12 +15,17 @@ public class ProductoService {
     }
 
     @Transactional(readOnly = true)
-    public List<Producto> listarProductos() {
-        return productoRepository.findAll();
+    public List<ProductoResponseDTO> listarProductos() {
+        return productoRepository.findAll()
+            .stream()
+            .map(ProductoResponseDTO::desde)
+            .toList();
     }
 
     @Transactional(readOnly = true)
-    public Optional<Producto> buscarPorCodigo(String codigo) {
-        return productoRepository.findById(codigo);
+    public Optional<ProductoResponseDTO> buscarPorCodigo(String codigo) {
+        return productoRepository.findById(codigo)
+            .map(ProductoResponseDTO::desde);
     }
 }
+

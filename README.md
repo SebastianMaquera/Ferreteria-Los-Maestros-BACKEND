@@ -50,7 +50,7 @@ La estructura final se ajustará al modelo de datos y a las reglas del caso.
 
 ## Repositorios
 
-- Frontend: **[agregar aquí el enlace al repositorio frontend]**
+- Frontend: https://github.com/SebastianMaquera/Ferreteria-Los-Maestros
 - Backend: https://github.com/SebastianMaquera/Ferreteria-Los-Maestros-BACKEND
 
 ## Ejecución local

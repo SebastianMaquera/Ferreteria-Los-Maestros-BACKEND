@@ -11,16 +11,18 @@ public final class AuthDtos {
     }
 
     public record RegistroRequest(
-        String run,
-        String nombre,
-        String apellido,
-        String correo,
-        String password,
-        String region,
-        String tipoCliente) {}
+        @NotBlank String run,
+        @NotBlank String nombre,
+        @NotBlank String apellido,
+        @NotBlank @Email String correo,
+        @NotBlank @Size(min = 8) String password,
+        @NotBlank String region,
+        @NotBlank String tipoCliente) {
+    }
 
-
-public record LoginRequest(String correo, String password) {}
+    public record LoginRequest(
+        @NotBlank @Email String correo,
+        @NotBlank String password) {}
 
 public record UsuarioResponse(
         Long id,
@@ -32,7 +34,6 @@ public record UsuarioResponse(
         String region,
         String tipoCliente,
         boolean activo) {}
-
 
 public record AuthResponse(
         String accessToken,

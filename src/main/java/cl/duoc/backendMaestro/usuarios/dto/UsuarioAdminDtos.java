@@ -2,16 +2,22 @@ package cl.duoc.backendMaestro.usuarios.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 // Responsable: Jonathan Ulloa
-public class UsuarioAdminDtos {
+public final class UsuarioAdminDtos {
 
-        public record ActualizarUsuarioRequest(
-                        @NotBlank String nombre,
-                        @NotBlank String apellido,
-                        @NotBlank @Email String correo,
-                        @NotBlank String rol,
-                        @NotBlank String region,
-                        @NotBlank String tipoCliente) {
-        }
+    private UsuarioAdminDtos() {
+    }
+
+    public record ActualizarUsuarioRequest(
+            @NotBlank @Size(max = 120) String nombre,
+            @NotBlank String apellido,
+            @NotBlank @Email @Size(max = 150) String correo,
+            @NotBlank @Pattern(regexp = "ADMIN|VENDEDOR|CLIENTE") String rol,
+            @NotBlank String region,
+            @NotBlank String tipoCliente
+    ) {
+    }
 }

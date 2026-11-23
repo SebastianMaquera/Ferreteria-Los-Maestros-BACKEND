@@ -2,6 +2,9 @@ package cl.duoc.backendMaestro.usuarios.controller;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +22,7 @@ public class UsuariosAdminController {
     private final UsuariosAdminService usuariosAdminService;
 
     public UsuariosAdminController(
-        UsuariosAdminService usuariosAdminService
-    ) {
+            UsuariosAdminService usuariosAdminService) {
         this.usuariosAdminService = usuariosAdminService;
     }
 
@@ -36,12 +38,16 @@ public class UsuariosAdminController {
 
     @PutMapping("/{id}")
     public UsuarioResponse actualizar(
-        @PathVariable Long id,
-        @Valid @RequestBody ActualizarUsuarioRequest request
-    ) {
+            @PathVariable Long id,
+            @Valid @RequestBody ActualizarUsuarioRequest request) {
         return usuariosAdminService.actualizar(id, request);
     }
-
+   
+    @ApiResponse(
+        responseCode = "204",
+        description = "Usuario desactivado correctamente",
+        content = @Content
+    )    
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> desactivar(@PathVariable Long id) {
         usuariosAdminService.desactivar(id);

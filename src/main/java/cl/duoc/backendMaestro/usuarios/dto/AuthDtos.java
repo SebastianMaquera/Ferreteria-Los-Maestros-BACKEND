@@ -11,32 +11,32 @@ public final class AuthDtos {
     }
 
     public record RegistroRequest(
-        @NotBlank @Size(max = 120) String nombre,
-        @NotBlank @Email @Size(max = 150) String correo,
-        @NotBlank @Size(min = 8) String password
-    ) {
-    }
-
-    public record LoginRequest(
-        @NotBlank @Email String correo,
-        @NotBlank String password
-    ) {
-    }
-
-    public record UsuarioResponse(
-        Long id,
+        String run,
         String nombre,
+        String apellido,
+        String correo,
+        String password,
+        String region,
+        String tipoCliente) {}
+
+
+public record LoginRequest(String correo, String password) {}
+
+public record UsuarioResponse(
+        Long id,
+        String run,
+        String nombre,
+        String apellido,
         String correo,
         String rol,
-        boolean activo
-    ) {
-    }
+        String region,
+        String tipoCliente,
+        boolean activo) {}
 
-    public record AuthResponse(
+
+public record AuthResponse(
         String accessToken,
         String tokenType,
-        long expiresInSeconds,
-        UsuarioResponse usuario
-    ) {
-    }
+        long expiresIn,
+        UsuarioResponse usuario) {}
 }

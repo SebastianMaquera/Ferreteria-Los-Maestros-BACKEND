@@ -47,7 +47,7 @@ El registro asigna el rol `CLIENTE` desde el servidor. Las contraseñas se proce
 | Modificar usuario | Sí | Sí | Sí | `PUT /api/admin/usuarios/{id}` respondió HTTP 200. |
 | Desactivar usuario | Sí | Sí | Sí | DELETE respondió HTTP 204 y el usuario quedó con `activo: false`. |
 | Protección por JWT y rol | Sí | Sí | Sí | Sin token se obtuvo HTTP 401; con rol insuficiente, HTTP 403. |
-| Validación de datos de entrada | Sí | Parcial | Parcial | Un correo inválido al actualizar respondió HTTP 400. Falta probar datos inválidos en el registro. |
+| Validación de datos de entrada | Sí | Sí | Sí | Correo inválido en registro y actualización respondió HTTP 400. |
 | Acceso de cada usuario solo a sus propios datos | Sí | Pendiente de verificar | Pendiente | Falta registrar evidencia de esta prueba. |
 | Formularios de inicio de sesión y registro del frontend conectados a la API | Sí | Pendiente de verificar | Pendiente | Confirmar que muestran estados de carga, éxito y error. |
 
